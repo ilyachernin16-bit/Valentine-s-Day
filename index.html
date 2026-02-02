@@ -68,7 +68,61 @@
         transform: translateY(-110vh);
         opacity: 0;
       }
-    }
+    } .character {
+  position: relative;
+  width: 140px;
+  height: 180px;
+  margin: 0 auto 20px;
+}
+
+.body {
+  width: 140px;
+  height: 160px;
+  background: #ffd93b;
+  border-radius: 70px 70px 60px 60px;
+  position: absolute;
+  bottom: 0;
+}
+
+.eye {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  border: 5px solid #555;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pocket {
+  width: 60px;
+  height: 35px;
+  background: #2d6cdf;
+  border-radius: 0 0 30px 30px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.heart-pop {
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  opacity: 0;
+  animation: popHeart 2.5s infinite;
+}
+
+@keyframes popHeart {
+  0% { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+  30% { transform: translate(-50%, -20px) scale(1); opacity: 1; }
+  60% { transform: translate(-50%, -60px) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -100px) scale(0.8); opacity: 0; }
+}
   </style>
 </head>
 <body>
@@ -77,8 +131,12 @@
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-ambient-110397.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- 📸 שים כאן את התמונה -->
-  <img src="PASTE_IMAGE_LINK_HERE" class="photo">
+<div class="character">
+  <div class="body"></div>
+  <div class="eye"></div>
+  <div class="pocket"></div>
+  <div class="heart-pop">💖</div>
+</div>
 
   <h1 id="typeText"></h1>
   <div id="countdown"></div>
