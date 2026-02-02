@@ -1,78 +1,26 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8">
-  <title>ולנטיינס 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
-      text-align: center;
-      padding: 30px;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>ולנטיינס 💖</title>
 
-    .photo {
-      width: 230px;
-      border-radius: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  overflow: hidden;
+}
 
-    h1 {
-      font-size: 28px;
-      min-height: 40px;
-    }
-
-    #countdown {
-      margin: 10px 0 25px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .btn {
-      padding: 15px 30px;
-      font-size: 20px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      position: absolute;
-      transition: 0.2s;
-    }
-
-    #yesBtn {
-      background: white;
-      color: #ff4e50;
-      left: 35%;
-      bottom: 110px;
-    }
-
-    #noBtn {
-      background: #333;
-      color: white;
-      left: 55%;
-      bottom: 110px;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 24px;
-      animation: floatUp linear infinite;
-    }
-
-    @keyframes floatUp {
-      to {
-        transform: translateY(-110vh);
-        opacity: 0;
-      }
-    } .character {
+/* דמות חמודה */
+.character {
   position: relative;
   width: 140px;
   height: 180px;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
 }
 
 .body {
@@ -123,13 +71,54 @@
   60% { transform: translate(-50%, -60px) scale(1.2); opacity: 1; }
   100% { transform: translate(-50%, -100px) scale(0.8); opacity: 0; }
 }
-  </style>
+
+h1 { font-size: 26px; margin: 10px 0; }
+
+.btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+}
+
+#yesBtn {
+  background: white;
+  color: #ff4e50;
+  left: 35%;
+  bottom: 110px;
+}
+
+#noBtn {
+  background: #333;
+  color: white;
+  left: 55%;
+  bottom: 110px;
+}
+
+/* לבבות נופלים */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 24px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <audio id="music" autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-ambient-110397.mp3" type="audio/mpeg">
-  </audio>
+<audio id="music" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-ambient-110397.mp3" type="audio/mpeg">
+</audio>
 
 <div class="character">
   <div class="body"></div>
@@ -138,102 +127,51 @@
   <div class="heart-pop">💖</div>
 </div>
 
-  <h1 id="typeText"></h1>
-  <div id="countdown"></div>
+<h1>האם תהיה הדייט שלי ביום האהבה?</h1>
 
-  <button id="yesBtn" class="btn" onclick="sayYes()">כן 💖</button>
-  <button id="noBtn" class="btn">לא 😜</button>
+<button id="yesBtn" class="btn" onclick="sayYes()">כן 💖</button>
+<button id="noBtn" class="btn">לא 😜</button>
 
-  <script>
-    // Typing effect
-    const text = "האם תהיה הדייט שלי ביום האהבה?";
-    let i = 0;
-    function typeWriter() {
-      if (i < text.length) {
-        document.getElementById("typeText").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      }
-    }
-    typeWriter();
+<script>
+const noBtn = document.getElementById("noBtn");
 
-    // Countdown to Feb 14
-    const countdown = document.getElementById("countdown");
-    const valentine = new Date("Feb 14, 2026 00:00:00").getTime();
+function moveButton() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = valentine - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      countdown.innerHTML = "עוד " + days + " ימים ליום האהבה 💘";
-    }, 1000);
+noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveButton(); });
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
 
-    // Moving NO button
-    const noBtn = document.getElementById("noBtn");
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 120);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-    noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveButton(); });
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("click", moveButton);
-
-    // YES button explosion
-    function sayYes() {
+function sayYes() {
   document.body.innerHTML = `
     <div style="padding-top:70px;">
       <h1>ידעתי שתגידי כן 😍</h1>
       <p>יום האהבה הולך להיות מושלם 💖</p>
-
-      <img src= https://imgur.com/z5UmXHC
-           style="width:260px; border-radius:20px; margin:20px 0; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
-
+      <img src="https://i.imgur.com/6X4Z8Qm.png" style="width:260px;border-radius:20px;margin:20px 0;">
       <div style="font-size:60px;">❤️🎉💖🎉❤️</div>
     </div>
   `;
-
-  for(let i=0;i<80;i++){
-    const heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random()*100+"vw";
-    heart.style.top = Math.random()*100+"vh";
-    heart.style.fontSize = "24px";
-    heart.style.animation = "floatUp 3s linear forwards";
-    document.body.appendChild(heart);
-  }
 }
-      `;
-      for(let i=0;i<80;i++){
-        const heart = document.createElement("div");
-        heart.innerHTML = "💖";
-        heart.style.position = "fixed";
-        heart.style.left = Math.random()*100+"vw";
-        heart.style.top = Math.random()*100+"vh";
-        heart.style.fontSize = "24px";
-        heart.style.animation = "floatUp 3s linear forwards";
-        document.body.appendChild(heart);
-      }
-    }
 
-    // Floating hearts background
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💘";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 300);
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💘";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
 
-    document.addEventListener("touchstart", () => {
-      document.getElementById("music").play();
-    }, { once: true });
-  </script>
+document.addEventListener("touchstart", () => {
+  document.getElementById("music").play();
+}, { once: true });
+</script>
 
 </body>
 </html>
