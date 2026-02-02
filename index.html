@@ -15,65 +15,13 @@ body {
   overflow: hidden;
 }
 
-/* דמות חמודה */
-.character {
-  position: relative;
-  width: 140px;
-  height: 180px;
-  margin: 0 auto 15px;
-}
-
-.body {
-  width: 140px;
-  height: 160px;
-  background: #ffd93b;
-  border-radius: 70px 70px 60px 60px;
-  position: absolute;
-  bottom: 0;
-}
-
-.eye {
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  border: 5px solid #555;
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.pocket {
-  width: 60px;
-  height: 35px;
-  background: #2d6cdf;
-  border-radius: 0 0 30px 30px;
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* לב קטן מהכיס */
-.heart-pop {
-  position: absolute;
-  bottom: 55px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-  opacity: 0;
-  animation: popHeart 2.5s infinite;
-}
-
-@keyframes popHeart {
-  0% { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
-  30% { transform: translate(-50%, -20px) scale(1); opacity: 1; }
-  60% { transform: translate(-50%, -60px) scale(1.2); opacity: 1; }
-  100% { transform: translate(-50%, -100px) scale(0.8); opacity: 0; }
-}
-
 h1 { font-size: 26px; margin: 10px 0; }
+
+.minion {
+  width: 180px;
+  margin: 15px auto;
+  display: block;
+}
 
 .btn {
   padding: 15px 30px;
@@ -98,7 +46,6 @@ h1 { font-size: 26px; margin: 10px 0; }
   bottom: 110px;
 }
 
-/* לבבות נופלים */
 .heart {
   position: fixed;
   bottom: -10px;
@@ -110,36 +57,18 @@ h1 { font-size: 26px; margin: 10px 0; }
   to {
     transform: translateY(-110vh);
     opacity: 0;
-}
-
-}
-
-/* תמונת מיניון */
-.minion {
-  width: 160px;
-  margin: 15px auto;
-  display: block;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-ambient-110397.mp3" type="audio/mpeg">
-</audio>
-
-<div class="character">
-  <div class="body"></div>
-  <div class="eye"></div>
-  <div class="pocket"></div>
-  <div class="heart-pop">💖</div>
-</div>
-
 <h1>האם תהיה הדייט שלי ביום האהבה?</h1>
 
-<!-- מיניון עם לב מהכיס -->
-<img class="minion" src="https://i.imgur.com/1O9T9Xe.png" alt="מיניון חמוד עם לב" style="width:160px; margin:15px auto; display:block;">
+<img class="minion" 
+     src="https://www.nicepng.com/png/detail/306-3069661_minion-and-love-image-love-minions-red-heart.png" 
+     alt="מיניון חמוד עם לב">
 
 <button id="yesBtn" class="btn" onclick="sayYes()">כן 💖</button>
 <button id="noBtn" class="btn">לא 😜</button>
@@ -163,7 +92,7 @@ function sayYes() {
     <div style="padding-top:70px;">
       <h1>ידעתי שתגידי כן 😍</h1>
       <p>יום האהבה הולך להיות מושלם 💖</p>
-      <img src="https://i.imgur.com/Yz0rQwA.png" style="width:260px;border-radius:20px;margin:20px 0;">
+      <img src="https://www.nicepng.com/png/detail/306-3069661_minion-and-love-image-love-minions-red-heart.png" style="width:260px;border-radius:20px;margin:20px 0;">
       <div style="font-size:60px;">❤️🎉💖🎉❤️</div>
     </div>
   `;
@@ -179,10 +108,6 @@ function createHeart() {
   setTimeout(() => heart.remove(), 6000);
 }
 setInterval(createHeart, 300);
-
-document.addEventListener("touchstart", () => {
-  document.getElementById("music").play();
-}, { once: true });
 </script>
 
 </body>
